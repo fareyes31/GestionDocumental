@@ -10,22 +10,22 @@
     <div class="row">
        <div class="col-md-12 login-from-row">
         <i *ngIf="this.formlogin.get('usuario')?.invalid && !this.formlogin.get('usuario')?.touched " class="fa fa-envelope m-1"></i>
-        <i *ngIf="this.formlogin.get('usuario')?.invalid && this.formlogin.get('usuario')?.touched" [ngStyle]="{'color':'red'}" class="fa fa-times m-1"></i>
-        <i *ngIf="this.formlogin.get('usuario')?.valid" [ngStyle]="{'color':'green'}" class="fa fa-check m-1"></i>
+        <i *ngIf="this.formlogin.get('usuario')?.invalid && this.formlogin.get('usuario')?.touched" class="fa fa-times color-error m-1"></i>
+        <i *ngIf="this.formlogin.get('usuario')?.valid" class="fa fa-check color-success m-1"></i>
             <input formControlName="usuario" name="usuario" type="text" placeholder="Usuario" required/>
        </div>
     </div>
     <div class="row">
        <div class="col-md-12 login-from-row">
             <i *ngIf="this.formlogin.get('contraseña')?.invalid && !this.formlogin.get('contraseña')?.touched " class="fa fa-key m-1"></i>
-            <i *ngIf="this.formlogin.get('contraseña')?.invalid && this.formlogin.get('contraseña')?.touched" [ngStyle]="{'color':'red'}" class="fa fa-times m-1"></i>
-            <i *ngIf="this.formlogin.get('contraseña')?.valid" [ngStyle]="{'color':'green'}" class="fa fa-check m-1"></i>
+            <i *ngIf="this.formlogin.get('contraseña')?.invalid && this.formlogin.get('contraseña')?.touched" class="fa fa-times color-error m-1"></i>
+            <i *ngIf="this.formlogin.get('contraseña')?.valid" class="fa fa-check color-success m-1"></i>
           <input formControlName="contraseña" name="password" type="password" placeholder="Contraseña" required/>
        </div>
     </div>
     <div class="row">
        <div class="col-md-12 login-from-row">
-          <button type="submit" class="btn btn-primary">Ingresar</button>
+          <button type="submit" [disabled]="this.formlogin.invalid" class="btn btn-primary">Ingresar</button>
        </div>
     </div>
     </form>

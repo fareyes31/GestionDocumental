@@ -31,3 +31,11 @@
  .login-form-font-header span {
 	color: #007C9B;
  }
+
+ .color-error{
+   color: red;
+ }
+
+ .color-success{
+   color: green;
+ }
