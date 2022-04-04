@@ -9,16 +9,6 @@ import { Routes } from '@angular/router';
 export class AppComponent {
   title = 'GestionDocumental';
 
-  constructor() {
-
-     const token = localStorage.getItem('token')
-
-     if(!token){
-      console.log('nada')
-        // this.routes.navigate(['/inicio'])
-     }else{
-       console.log(token)
-     }
-  }
+  constructor() { }
 
 }
