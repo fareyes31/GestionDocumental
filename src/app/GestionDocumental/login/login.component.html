@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row text-center login-page">
+   <div class="col-md-12 login-form">
+      <form [formGroup]="formlogin" autocomplete="off" (ngSubmit)="loginuser()"> 			
+         <div class="row">
+        <div class="col-md-12 login-form-header">
+           <p class="login-form-font-header">Gestion<span>Documental</span><p>
+        </div>
+    </div>
+    <div class="row">
+       <div class="col-md-12 login-from-row">
+        <i class="fa fa-envelope m-1"></i>
+            <input formControlName="usuario" name="usuario" type="text" placeholder="Usuario" required/>
+       </div>
+    </div>
+    <div class="row">
+       <div class="col-md-12 login-from-row">
+            <i class="fa fa-key m-1"></i>
+          <input formControlName="contraseña" name="password" type="password" placeholder="Contraseña" required/>
+       </div>
+    </div>
+    <div class="row">
+       <div class="col-md-12 login-from-row">
+          <button type="submit" class="btn btn-primary">Ingresar</button>
+       </div>
+    </div>
+    </form>
+</div>
+ </div>
+</div>
