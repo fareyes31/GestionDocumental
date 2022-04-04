@@ -6,10 +6,20 @@ import { VigilanteGuard } from './guards/vigilante.guard';
 
 const routes: Routes = [
 
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'inicio', component: InicioComponent, canActivate: [VigilanteGuard]},
-  {path: 'login', component: LoginComponent},
-
+  {
+    path: '',
+    component: LoginComponent,
+    // pathMatch: 'full'
+  },
+  {
+    path: 'inicio',
+    component: InicioComponent,
+    canActivate: [VigilanteGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
 ];
 
 @NgModule({
