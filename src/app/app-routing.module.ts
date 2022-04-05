@@ -10,27 +10,30 @@ const routes: Routes = [
   {
     path: '',
     component: InicioComponent,
-    canActivate: [VigilanteGuard]
+    canActivate: [VigilanteGuard],
+    children: [
+      {
+        path: 'inicio',
+        component: InicioComponent,
+        canActivate: [VigilanteGuard]
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+    ]
   },
-  {
-    path: 'inicio',
-    component: InicioComponent,
-    canActivate: [VigilanteGuard]
-  },
+
   {
     path: 'login',
     component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    canActivate: [VigilanteGuard]
   },
   {
     path: '**',
     redirectTo: '/',
     pathMatch: 'full'
   },
+
 ];
 
 @NgModule({
