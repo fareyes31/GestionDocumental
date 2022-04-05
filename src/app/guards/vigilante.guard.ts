@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VigilanteGuard implements CanActivate {
+
+  constructor(private router:Router){}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -13,6 +16,7 @@ export class VigilanteGuard implements CanActivate {
     if(token){
       return true;
     }else{
+      this.router.navigate(['/login']);
       return false;
     }
   }

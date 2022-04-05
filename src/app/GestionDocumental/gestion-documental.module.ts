@@ -8,6 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { RegisterComponent } from './register/register.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,14 +23,20 @@ import { ToastrModule } from 'ngx-toastr';
     InicioComponent,
     LoginComponent,
     MenuComponent,
+    RegisterComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterModule
   ],
-  exports: [LoginComponent]
+  exports: [LoginComponent,InicioComponent]
 })
 export class GestionDocumentalModule { }

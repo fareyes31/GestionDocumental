@@ -1,104 +1,26 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <!-- Container wrapper -->
-  <div class="container-fluid">
-    <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">Navbar</a>
+<mat-toolbar class="color-navbar">
+  <button class="m-2 color-navbar" (click)="drawer.toggle()" mat-mini-fab aria-label="Example icon button with a menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="small-cel-text">Gestion Documental.</span>
+  <span class="example-spacer"></span>
+  <span class="text-right ocultar-cel">Exit</span>
+  <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
 
-    <!-- Toggle button -->
-    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <i class="fa fa-bars text-light"></i>
-    </button>
 
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0">
-        <li class="nav-item text-center mx-2 mx-lg-1">
-          <a class="nav-link active" aria-current="page" href="#!">
-            <div>
-              <i class="fa fa-home fa-lg mb-1"></i>
-            </div>
-            Home
-          </a>
-        </li>
-        <li class="nav-item text-center mx-2 mx-lg-1">
-          <a class="nav-link" href="#!">
-            <div>
-              <i class="fa fa-envelope fa-lg mb-1"></i>
-              <span class="badge rounded-pill badge-notification bg-danger">11</span>
-            </div>
-            Link
-          </a>
-        </li>
-        <li class="nav-item text-center mx-2 mx-lg-1">
-          <a class="nav-link disabled" aria-disabled="true" href="#!">
-            <div>
-              <i class="fa fa-envelope fa-lg mb-1"></i>
-              <span class="badge rounded-pill badge-notification bg-warning">11</span>
-            </div>
-            Disabled
-          </a>
-        </li>
-        <li class="nav-item dropdown text-center mx-2 mx-lg-1">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown"
-            aria-expanded="false">
-            <div>
-              <i class="fa fa-envelope fa-lg mb-1"></i>
-              <span class="badge rounded-pill badge-notification bg-primary">11</span>
-            </div>
-            Dropdown
-          </a>
-          <!-- Dropdown menu -->
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <!-- Left links -->
 
-      <!-- Right links -->
-      <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
-        <li class="nav-item text-center mx-2 mx-lg-1">
-          <a class="nav-link" href="#!">
-            <div>
-              <i class="fa fa-bell fa-lg mb-1"></i>
-              <span class="badge rounded-pill badge-notification bg-info">11</span>
-            </div>
-            Messages
-          </a>
-        </li>
-        <li class="nav-item text-center mx-2 mx-lg-1">
-          <a class="nav-link" href="#!">
-            <div>
-              <i class="fa fa-globe-americas fa-lg mb-1"></i>
-              <span class="badge rounded-pill badge-notification bg-success">11</span>
-            </div>
-            News
-          </a>
-        </li>
-      </ul>
-      <!-- Right links -->
-
-      <!-- Search form -->
-      <form class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0">
-        <input type="search" class="form-control" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-primary" type="button" data-mdb-ripple-color="dark">
-          Search
-        </button>
-      </form>
-    </div>
-    <!-- Collapsible wrapper -->
-  </div>
-  <!-- Container wrapper -->
-</nav>
-<!-- Navbar -->
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="router-link-active">
+        <a [routerLink]="['/inicio']">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/register']">Registrar Usuario</a>
+      </li>
+    </ul>
+  </mat-drawer>
+</mat-drawer-container>

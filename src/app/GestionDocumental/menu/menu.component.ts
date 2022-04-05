@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
+  showFiller = false;
   constructor(private route:Router) { }
 
   ngOnInit(): void {

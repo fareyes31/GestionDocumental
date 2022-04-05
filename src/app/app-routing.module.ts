@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './GestionDocumental/login/login.component';
 import { InicioComponent } from './GestionDocumental/inicio/inicio.component';
 import { VigilanteGuard } from './guards/vigilante.guard';
+import { RegisterComponent } from './GestionDocumental/register/register.component';
 
 const routes: Routes = [
 
   {
     path: '',
-    component: LoginComponent,
-    // pathMatch: 'full'
+    component: InicioComponent,
+    canActivate: [VigilanteGuard]
   },
   {
     path: 'inicio',
@@ -19,6 +20,16 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [VigilanteGuard]
+  },
+  {
+    path: '**',
+    redirectTo: '/',
+    pathMatch: 'full'
   },
 ];
 

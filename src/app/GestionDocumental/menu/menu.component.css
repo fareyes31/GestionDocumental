@@ -1,3 +1,35 @@
-.btn {
-  padding: .55rem 1.5rem .45rem;
+.color-navbar{
+  background-color: #007C9B;
+  color: aliceblue;
 }
+.example-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+/* Cuando la pantalla es menor a 900px  (tablets y teléfonos inteligentes)*/
+@media only screen and (max-width : 900px) {
+  .ocultar-cel{
+  display: none;
+  }
+
+  .small-cel-text{
+    font-size: 100%;
+  }
+}
+
