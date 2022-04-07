@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '',
     component: InicioComponent,
     canActivate: [VigilanteGuard],
-    children: [
+  },
       {
         path: 'inicio',
         component: InicioComponent,
@@ -19,11 +19,9 @@ const routes: Routes = [
       },
       {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
+        canActivate: [VigilanteGuard]
       },
-    ]
-  },
-
   {
     path: 'login',
     component: LoginComponent

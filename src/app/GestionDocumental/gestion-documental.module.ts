@@ -37,6 +37,9 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     RouterModule
   ],
-  exports: [LoginComponent]
+  exports: [
+    LoginComponent,
+    MenuComponent
+  ]
 })
 export class GestionDocumentalModule { }
