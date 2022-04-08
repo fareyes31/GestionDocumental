@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   @Output()
   onToken: EventEmitter<number> = new EventEmitter
+  
 
   constructor(private fb: FormBuilder, private LoginService: LoginService, private toastr:ToastrService, private router:Router) {
     this.formlogin = this.fb.group({
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
   }
 
   loginuser(){
@@ -37,8 +39,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', res.access_token);
       this.formlogin.reset();
       this.toastr.success('ACCESO AUTORIZADO!', 'Bienvenido!');
-
       this.router.navigate(['inicio'])
+
     },(error:any) => {
       if(error.status == '401'){
         localStorage.removeItem('token');

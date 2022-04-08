@@ -8,16 +8,13 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'GestionDocumental';
-  token:any = '';
+  token = '';
 
   constructor(private route:Router) {
-    this.token = localStorage.getItem('token');
-    console.log('token desde el constructor'+this.token)
   }
 
   ngOnInit(): void {
-    this.token = localStorage.getItem('token');
-    console.log('token desde el ngOnit'+this.token)
+   
   }
 
   logout(){

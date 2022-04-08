@@ -6,14 +6,21 @@ import { HttpClient } from '@angular/common/http'
 })
 export class LoginService {
 
+  token:any = '';
+
+
   baseurl:string='http://127.0.0.1:8000/api/auth/'
 
   constructor (private http:HttpClient) {}
 
+  ngOnInit(): void {
+  
+  }
+  
   loginuser(form:any){ return this.http.post(`${this.baseurl}login`,{
       email: form.usuario,
       password: form.contraseña
-  }) 
+  })
 }
 
 }
