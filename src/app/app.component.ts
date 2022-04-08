@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from './services/login.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +10,28 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'GestionDocumental';
-  token = '';
+  token$: Observable<string>;
+  token="";
 
-  constructor(private route:Router) {
+  constructor(private route:Router, private LoginService:LoginService) {
+    this.token$ = this.LoginService.getToken();
+    this.ValidarToken()
   }
 
   ngOnInit(): void {
-   
   }
 
   logout(){
     localStorage.removeItem('token');
+    this.ValidarToken()
     this.route.navigate(['login']);
+  }
+
+  ValidarToken(){
+    this.token$ = this.LoginService.getToken();
+    this.token$.subscribe((res) => {
+      this.token = res
+      })
   }
 
 }
