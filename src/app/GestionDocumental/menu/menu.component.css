@@ -1,3 +1,40 @@
+a.hover-menu:hover{
+  background-color: #007C9B;
+  color: aliceblue;
+  border-radius: 8px;
+}
+
+.nav-item{
+  padding: 5px;
+}
+
+.hover-menu{
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: black;
+  padding: 5px;
+  margin: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: color 1s;
+}
+
+.hover-menu::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50px;
+  width: 0;
+  height: 100%;
+  background-color: aquamarine;
+  transform: skewX(35deg);
+  z-index: -1;
+  transition: width 1sg;
+}
+
+
+
 .color-navbar{
   background-color: #007C9B;
   color: aliceblue;
