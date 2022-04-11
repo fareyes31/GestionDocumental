@@ -7,7 +7,12 @@ import { GestionDocumentalModule } from './GestionDocumental/gestion-documental.
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from './shared/shared.module';
-import { RouterModule } from '@angular/router';
+import { ExtraOptions, PreloadAllModules, RouterModule } from '@angular/router';
+
+const routerConfig: ExtraOptions = {
+  preloadingStrategy       : PreloadAllModules,
+  scrollPositionRestoration: 'enabled'
+};
 
 @NgModule({
   declarations: [
@@ -15,7 +20,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,routerConfig),
     AppRoutingModule,
     GestionDocumentalModule,
     NoopAnimationsModule,

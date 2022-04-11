@@ -1,6 +1,5 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +20,4 @@ export class LoginService {
   })
 }
 
-  getToken(): Observable<boolean>{
-    const token = localStorage.getItem("token")
-    if(token && token.length > 5){
-      return of(true)
-    }else{
-      return of(false)
-    }
-  }
 }

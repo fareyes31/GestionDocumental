@@ -11,7 +11,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 
 
@@ -20,7 +19,6 @@ import { RouterModule } from '@angular/router';
   declarations: [
     InicioComponent,
     LoginComponent,
-    RegisterComponent,
   ],
   imports: [
     CommonModule,

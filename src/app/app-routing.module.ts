@@ -16,14 +16,13 @@ export const routes: Route[] = [
       {
         path: 'inicio',
         loadChildren: () => import('src/app/GestionDocumental/inicio/inicio.module').then(m=>m.InicioModule)
+      },
+      {
+        path: 'register',
+        loadChildren: () => import('src/app/GestionDocumental/register/register.module').then(m=>m.RegisterModule)
       }
     ]
   },
-      {
-        path: 'register',
-        component: RegisterComponent,
-        canActivate: [VigilanteGuard]
-      },
   {
     path: 'login',
     component: LoginComponent,

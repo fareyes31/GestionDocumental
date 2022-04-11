@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
 })
 export class GeneralComponent implements OnInit {
 
-  token:boolean=false;
-
   constructor(private route:Router) { }
 
   ngOnInit(): void {
