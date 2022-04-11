@@ -7,11 +7,6 @@ import { Observable, of } from 'rxjs';
 })
 export class LoginService {
 
-
-@Output() disaprarvalor: EventEmitter<any> = new EventEmitter()
-
-
-  token="";
   baseurl:string='http://127.0.0.1:8000/api/auth/'
 
   constructor (private http:HttpClient) {}
@@ -26,8 +21,12 @@ export class LoginService {
   })
 }
 
-  getToken(): Observable<any>{
+  getToken(): Observable<boolean>{
     const token = localStorage.getItem("token")
-    return of(token)
+    if(token && token.length > 5){
+      return of(true)
+    }else{
+      return of(false)
+    }
   }
 }

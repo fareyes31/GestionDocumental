@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import { LoginComponent } from './GestionDocumental/login/login.component';
-import { InicioComponent } from './GestionDocumental/inicio/inicio.component';
 import { VigilanteGuard } from './guards/vigilante.guard';
 import { RegisterComponent } from './GestionDocumental/register/register.component';
+import { GeneralComponent } from './shared/general/general.component';
+import { LoginGuard } from './guards/login.guard';
 
-const routes: Routes = [
+export const routes: Route[] = [
 
   {
     path: '',
-    component: InicioComponent,
+    component: GeneralComponent,
     canActivate: [VigilanteGuard],
-  },
+    children:[
       {
         path: 'inicio',
-        component: InicioComponent,
-        canActivate: [VigilanteGuard]
-      },
+        loadChildren: () => import('src/app/GestionDocumental/inicio/inicio.module').then(m=>m.InicioModule)
+      }
+    ]
+  },
       {
         path: 'register',
         component: RegisterComponent,
@@ -24,7 +26,9 @@ const routes: Routes = [
       },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [LoginGuard],
+
   },
   {
     path: '**',

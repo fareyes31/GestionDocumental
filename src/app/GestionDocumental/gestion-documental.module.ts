@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from './menu/menu.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,10 +18,8 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    MenuComponent,
     InicioComponent,
     LoginComponent,
-    MenuComponent,
     RegisterComponent,
   ],
   imports: [
@@ -38,8 +35,7 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   exports: [
-    LoginComponent,
-    MenuComponent
+    LoginComponent
   ]
 })
 export class GestionDocumentalModule { }

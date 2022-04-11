@@ -10,28 +10,27 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'GestionDocumental';
-  token$: Observable<string>;
-  token="";
+  // token$: boolean;
+  token:boolean = true;
 
   constructor(private route:Router, private LoginService:LoginService) {
-    this.token$ = this.LoginService.getToken();
-    this.ValidarToken()
+
   }
 
   ngOnInit(): void {
+    this.LoginService.getToken().subscribe((response)=>{
+      console.log('respuesta ', response);
+      
+    })
   }
 
-  logout(){
-    localStorage.removeItem('token');
-    this.ValidarToken()
-    this.route.navigate(['login']);
-  }
 
-  ValidarToken(){
-    this.token$ = this.LoginService.getToken();
-    this.token$.subscribe((res) => {
-      this.token = res
-      })
-  }
+
+  // ValidarToken(){
+  //   this.token$ = this.LoginService.getToken();
+  //   this.token$.subscribe((res) => {
+  //     this.token = res
+  //     })
+  // }
 
 }

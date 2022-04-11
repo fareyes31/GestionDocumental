@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GestionDocumentalModule } from './GestionDocumental/gestion-documental.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { SharedModule } from './shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -18,13 +15,11 @@ import {MatButtonModule} from '@angular/material/button';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     AppRoutingModule,
     GestionDocumentalModule,
     NoopAnimationsModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
+    SharedModule
 
   ],
   providers: [],

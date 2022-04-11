@@ -1,0 +1,16 @@
+<mat-toolbar class="color-navbar">
+    <button class="m-2 color-navbar" (click)="drawer.toggle()" mat-mini-fab aria-label="Example icon button with a menu icon">
+      <mat-icon>menu</mat-icon>
+      </button>
+      <span class="small-cel-text">Gestion Documental.</span>
+      <span class="example-spacer"></span>
+      <span class="text-right ocultar-cel">Exit</span>
+      <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+  </mat-toolbar>
+  <mat-drawer-container  class="example-container">
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <app-menu></app-menu>
+    </mat-drawer>
+</mat-drawer-container>
