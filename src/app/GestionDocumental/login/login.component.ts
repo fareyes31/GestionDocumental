@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
@@ -34,11 +34,6 @@ export class LoginComponent implements OnInit {
       this.formlogin.reset();
       this.toastr.success('ACCESO AUTORIZADO!', 'Bienvenido!');
       this.router.navigate(['inicio'])
-
-
-
-
-
     },(error:any) => {
       if(error.status == '401'){
         localStorage.removeItem('token');
