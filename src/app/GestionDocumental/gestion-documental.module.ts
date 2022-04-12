@@ -30,7 +30,7 @@ import { RouterModule } from '@angular/router';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     LoginComponent

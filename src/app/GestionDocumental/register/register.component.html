@@ -1,35 +1,70 @@
 <div class="container">
   <div class="row text-center login-page">
  <div class="col-md-12 login-form">
-    <form [formGroup]="formregister" autocomplete="off" (ngSubmit)="registeruser()">
-       <div class="row">
-      <div class="col-md-12 login-form-header">
-         <p class="login-form-font-header">Registrar <span>Usuario</span><p>
+
+  <form class="example-form" [formGroup]="formregister" autocomplete="off" (ngSubmit)="registeruser()">
+    <div class="row">
+      <div class="col-md-12 login-from-row">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" name="email" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      <mat-error *ngIf="this.formregister.get('email')?.hasError('email') && !this.formregister.get('email')?.hasError('required')">
+        Porfavor ingresa un Email valido
+      </mat-error>
+      <mat-error *ngIf="this.formregister.get('email')?.hasError('required')">
+        Email es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 login-from-row">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombres y Apellidos</mat-label>
+      <input type="text" matInput formControlName="usuario" name="usuario" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="!this.formregister.get('usuario')?.hasError('required')">
+        Nombres y Apellidos son <strong>requeridos</strong>
+      </mat-error>
+      <mat-error *ngIf="this.formregister.get('usuario')?.hasError('required')">
+        Nombres y Apellidos <strong>requeridos</strong>
+      </mat-error>
+    </mat-form-field>
       </div>
-  </div>
-  <div class="row">
-     <div class="col-md-12 login-from-row">
-      <i class="fa fa-user m-1"></i>
-          <input formControlName="nombre" name="nombre" type="text" placeholder="Nombre y apellidos" required/>
-     </div>
-  </div>
-  <div class="row">
-     <div class="col-md-12 login-from-row">
-      <i class="fa fa-envelope m-1"></i>
-          <input formControlName="usuario" name="usuario" type="text" placeholder="Usuario" required/>
-     </div>
-  </div>
-  <div class="row">
-     <div class="col-md-12 login-from-row">
-          <i class="fa fa-key m-1"></i>
-        <input formControlName="contraseña" name="password" type="password" placeholder="Contraseña" required/>
-     </div>
-  </div>
-  <div class="row">
-     <div class="col-md-12 login-from-row">
-        <button type="submit" class="btn btn-primary">Registrar</button>
-     </div>
-  </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-12 login-from-row">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput formControlName="contraseña" name="contraseña" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="!this.formregister.get('contraseña')?.hasError('required')">
+        Porfavor ingresa una contraseña
+      </mat-error>
+      <mat-error *ngIf="this.formregister.get('contraseña')?.hasError('required')">
+        Contraseña es <strong>requerida</strong>
+      </mat-error>
+    </mat-form-field>
+    </div>
+    </div>
+
+
+    <br>
+    <div class="row">
+      <div class="col-md-12 login-from-row">
+    <div class="example-button-row">
+
+      <button type="submit" [disabled]="this.formregister.invalid" mat-flat-button class="btn btn-primary">Registrar</button>
+    </div>
+    </div>
+    </div>
+    <br>
+
   </form>
 </div>
 </div>
