@@ -42,10 +42,11 @@
 	color: #007C9B;
  }
 
- .color-error{
-   color: red;
+ .login-page{
+   margin-top: 2%;
+   padding-top: 2%;
  }
 
- .color-success{
-   color: green;
+ .btn-register{
+  color: aliceblue;
  }

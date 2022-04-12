@@ -18,6 +18,7 @@ a.hover-menu:hover{
   position: relative;
   overflow: hidden;
   transition: color 1s;
+
 }
 
 .hover-menu::before{
@@ -26,7 +27,7 @@ a.hover-menu:hover{
   top: 0;
   left: -50px;
   width: 0;
-  height: 100%;
+  height: 94%;
   background-color: aquamarine;
   transform: skewX(35deg);
   z-index: -1;
@@ -41,19 +42,20 @@ a.hover-menu:hover{
 }
 .example-container {
   width: 100%;
-  height: 100%;
+  height: 94%;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .example-sidenav-content {
   display: flex;
-  height: 100%;
+  height: 94%;
   align-items: center;
   justify-content: center;
 }
 
 .example-sidenav {
   padding: 20px;
+
 }
 
 .example-spacer {
@@ -68,5 +70,41 @@ a.hover-menu:hover{
   .small-cel-text{
     font-size: 100%;
   }
+
+  .hover-menu{
+    font-size: 65%;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: black;
+    padding: 5px;
+    margin: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: color 1s;
+  }
+
+  .hover-menu::before{
+    font-size: 65%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width: 0;
+    height: 94%;
+    background-color: aquamarine;
+    transform: skewX(35deg);
+    z-index: -1;
+    transition: width 1sg;
+  }
+
+  .hover-menu:hover{
+    font-size: 65%;
+    background-color: #007C9B;
+    color: aliceblue;
+    border-radius: 8px;
+
+  }
+
 }
 
