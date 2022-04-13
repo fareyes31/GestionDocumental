@@ -20,6 +20,10 @@ export const routes: Route[] = [
       {
         path: 'register',
         loadChildren: () => import('src/app/GestionDocumental/register/register.module').then(m=>m.RegisterModule)
+      },
+      {
+        path: 'list-usuarios',
+        loadChildren: () => import('src/app/GestionDocumental/list-usuarios/list-usuarios.module').then(m=>m.ListUsuariosModule)
       }
     ]
   },

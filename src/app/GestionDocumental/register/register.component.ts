@@ -41,8 +41,10 @@ export class RegisterComponent implements OnInit {
       this.formregister.reset();
       this.router.navigate(['inicio'])
       this.toastr.success('USUARIO REGISTRADO!');
-    }),(err:any)=>{
-      // console.log(error)
+    }),(error:any) => {
+      if(error.status == '400'){
+        this.toastr.error('DATOS NO ALAMACENADOS!', 'El usuario que adicionas, ya existe!');
+      }
     }
   }
 }

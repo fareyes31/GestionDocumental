@@ -12,6 +12,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { ListUsuariosComponent } from './list-usuarios/list-usuarios.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -19,6 +21,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     InicioComponent,
     LoginComponent,
+    ListUsuariosComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +34,7 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     RouterModule,
+    MatTableModule,
   ],
   exports: [
     LoginComponent
