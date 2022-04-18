@@ -5,6 +5,7 @@ import { ListUsuariosComponent } from './list-usuarios.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 
+
 const ruta: Route [] = [
   {
     path:'',

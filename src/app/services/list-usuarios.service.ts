@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,17 +12,32 @@ export class ListUsuariosService {
 
   baseurl:string='http://127.0.0.1:8000/api/auth/'
   token:any ="";
-  constructor(private Http:HttpClient) {
-    this.token = localStorage.getItem('token');
-  }
+
+  constructor(private Http:HttpClient,private toastr:ToastrService,private router:Router) {  }
 
   listUsuarios(){
+    this.token = localStorage.getItem('token');
+    const headers={
+      'Authorization':'Bearer '+this.token
+    }
+    return this.Http.get<any>(`${this.baseurl}obtenerusuarios`,{headers})
+
+  }
+
+
+  buscarusuario(){
     const headers={
       'Authorization':'Bearer '+this.token
     }
     const params={
-      'id':5
+      'id':4
     }
-    return this.Http.get<any>(`${this.baseurl}searchuser`,{headers, params})
+    return this.Http.get<any>(`${this.baseurl}searchuser`,{headers, params}).pipe(
+      map(resp => resp['data']),
+      catchError((err): any => {
+          console.log(err);
+        })
+    )
+
   }
 }

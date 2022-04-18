@@ -14,7 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { ListUsuariosComponent } from './list-usuarios/list-usuarios.component';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -35,6 +35,7 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     RouterModule,
     MatTableModule,
+    MatDialogModule
   ],
   exports: [
     LoginComponent
