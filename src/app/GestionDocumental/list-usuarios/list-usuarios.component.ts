@@ -29,17 +29,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ListUsuariosComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['id','name', 'email' ,'editar'];
+  dataSource = [];
 
   constructor(private ListUsuariosService:ListUsuariosService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
 
     this.ListUsuariosService.listUsuarios().subscribe((res)=>{
-      console.log(res)
+      // console.log(res)
+      this.dataSource=res.users;
     }),(error:any) => {
-      console.log(error)
+      this.toastr.error('ACCESO NO AUTORIZADO!', 'Valida tus credenciales de acceso!');
     }
 
   }

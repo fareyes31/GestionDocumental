@@ -4,7 +4,6 @@ import { Route, RouterModule } from '@angular/router';
 import { ListUsuariosComponent } from './list-usuarios.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
 
 const ruta: Route [] = [
   {

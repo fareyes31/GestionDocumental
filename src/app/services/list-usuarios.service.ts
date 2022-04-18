@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,13 @@ export class ListUsuariosService {
     this.token = localStorage.getItem('token');
   }
 
-  listUsuarios(){ return this.Http.post(`${this.baseurl}obtenerusuarios`,{
-    Authorization: `Bearer ${this.token}`
-    })
+  listUsuarios(){
+    const headers={
+      'Authorization':'Bearer '+this.token
+    }
+    const params={
+      'id':5
+    }
+    return this.Http.get<any>(`${this.baseurl}searchuser`,{headers, params})
   }
 }
