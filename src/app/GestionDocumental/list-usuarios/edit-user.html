@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row text-center login-page">
+    <div class="col-md-12 login-form">
+<form  autocomplete="off" >
+  <div class="row">
+    <div class="col-md-12 login-form-header">
+      <p class="login-form-font-header">Editar<span>Usuario</span></p>
+      <p></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 login-from-row m-2">
+
+      <input class="form-control" formControlName="name" name="name" type="text" placeholder="name" required />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 login-from-row m-2">
+
+      <input class="form-control" formControlName="email" name="email" type="email" placeholder="email" required />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 login-from-row m-2">
+
+      <input class="form-control" formControlName="contraseña" name="password" type="password" placeholder="Contraseña" required />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 login-from-row " mat-dialog-actions>
+      <button class="btn btn-danger" (click)="closeDialog()" mat-dialog-close>Close</button>
+    </div>
+    <div class="col-md-6 login-from-row ">
+      <button type="submit" class="btn btn-primary">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
+
+</div>
+</div>
+</div>
+

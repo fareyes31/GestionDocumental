@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -25,26 +26,30 @@ export class ListUsuariosComponent implements OnInit {
   constructor(public dialog: MatDialog,private ListUsuariosService:ListUsuariosService, private toastr:ToastrService, private router:Router) { }
 
   openDialog() {
-    this.dialog.open(DialogElementsExampleDialog);
+    this.dialog.open(DialogElementsExampleDialog , {
+      height: '400px',
+      width: '600px',
+    });
   }
 
   ngOnInit(): void {
 
     this.ListUsuariosService.listUsuarios().subscribe((resp)=>{
-      // console.log(resp)
       this.dataSource=resp.users;
+      console.log(this.dataSource[0]['id'])
     }),
     (error:any) => {
       this.toastr.error('ACCESO NO AUTORIZADO!', 'Valida tus credenciales de acceso!');
     }
 
   }
+  //1512444
 
 }
 
 @Component({
-  selector: 'dialog-elements-example-dialog',
-  templateUrl: 'dialog-elements-example-dialog.html',
+  selector: 'edit-user',
+  templateUrl: 'edit-user.html',
 })
 export class DialogElementsExampleDialog {
 
