@@ -25,19 +25,14 @@ export class ListUsuariosService {
   }
 
 
-  buscarusuario(){
+  buscarusuario(id:number){
     const headers={
       'Authorization':'Bearer '+this.token
     }
     const params={
-      'id':4
+      'id':id
     }
-    return this.Http.get<any>(`${this.baseurl}searchuser`,{headers, params}).pipe(
-      map(resp => resp['data']),
-      catchError((err): any => {
-          console.log(err);
-        })
-    )
+    return this.Http.get<any>(`${this.baseurl}searchuser`,{headers, params})
 
   }
 }
