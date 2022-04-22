@@ -16,7 +16,7 @@ export class ListUsuariosService {
   constructor(private Http:HttpClient,private toastr:ToastrService,private router:Router) {  }
 
   listUsuarios(){
-    this.token = localStorage.getItem('token');
+    this.token = sessionStorage.getItem('token');
     const headers={
       'Authorization':'Bearer '+this.token
     }
@@ -26,6 +26,7 @@ export class ListUsuariosService {
 
 
   buscarusuario(id:number){
+    this.token = sessionStorage.getItem('token');
     const headers={
       'Authorization':'Bearer '+this.token
     }

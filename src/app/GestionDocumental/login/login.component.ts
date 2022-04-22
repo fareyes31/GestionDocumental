@@ -30,13 +30,14 @@ export class LoginComponent implements OnInit {
 
   loginuser(){
     this.LoginService.loginuser(this.formlogin.value).subscribe((res:any)=>{
-      localStorage.setItem('token', res.access_token);
+      // localStorage.setItem('token', res.access_token);
+      sessionStorage.setItem('token', res.access_token);
       this.formlogin.reset();
       this.toastr.success('ACCESO AUTORIZADO!', 'Bienvenido!');
       this.router.navigate(['inicio'])
     },(error:any) => {
       if(error.status == '401'){
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         this.toastr.error('ACCESO NO AUTORIZADO!', 'Valida tus credenciales de acceso!');
       }
     }
