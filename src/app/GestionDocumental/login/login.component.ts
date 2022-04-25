@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
 
   loginuser(){
     this.LoginService.loginuser(this.formlogin.value).subscribe((res:any)=>{
-      // localStorage.setItem('token', res.access_token);
       sessionStorage.setItem('token', res.access_token);
       this.formlogin.reset();
       this.toastr.success('ACCESO AUTORIZADO!', 'Bienvenido!');
@@ -38,7 +37,11 @@ export class LoginComponent implements OnInit {
     },(error:any) => {
       if(error.status == '401'){
         sessionStorage.removeItem('token');
-        this.toastr.error('ACCESO NO AUTORIZADO!', 'Valida tus credenciales de acceso!');
+        this.toastr.error('Valida tus credenciales de acceso!', 'ACCESO NO AUTORIZADO!');
+      }else if(error.status == '500'){
+        this.toastr.error('Sin conexion con el servidor!', 'ERROR!');
+      }else{
+        this.toastr.error('Error no especificado!', 'ERROR!');
       }
     }
   )}

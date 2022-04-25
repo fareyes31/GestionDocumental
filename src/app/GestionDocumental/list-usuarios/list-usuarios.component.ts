@@ -5,14 +5,7 @@ import { Router } from '@angular/router';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { DataListUsers } from './list.type';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
-
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -22,29 +15,29 @@ export interface PeriodicElement {
 })
 export class ListUsuariosComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','name', 'email' ,'editar'];
+  listusuariossubs?:Subscription
   dataSource:DataListUsers[] = [];
 
   constructor(public dialog: MatDialog,private ListUsuariosService:ListUsuariosService, private toastr:ToastrService, private router:Router) { }
 
   openDialog(id:number) {
-
     const dialogConfig = new MatDialogConfig();
-    
     dialogConfig.data = id;
-
     this.dialog.open(EditModalComponent , dialogConfig);
   }
 
   ngOnInit(): void {
-
-    this.ListUsuariosService.listUsuarios().subscribe((resp)=>{
+    this.listusuariossubs = this.ListUsuariosService.listUsuarios().subscribe((resp)=>{
       this.dataSource=resp.users;
-    }),
-    (error:any) => {
+    },error => {
+      sessionStorage.removeItem('token');
+      this.router.navigate(['/login']);
       this.toastr.error('ACCESO NO AUTORIZADO!', 'Valida tus credenciales de acceso!');
-    }
+    })
+  }
 
+  ngOnDestroy(){
+    this.listusuariossubs?.unsubscribe();
   }
 
 }
