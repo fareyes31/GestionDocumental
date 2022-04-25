@@ -63,7 +63,13 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['list-usuarios'])
       this.toastr.success('USUARIO REGISTRADO!');
     },error => {
-      this.toastr.error(error.error.email[0]+'!' , error.status);
+      if(error.error.email){
+        this.toastr.error(error.error.email[0]+'!' , error.status);
+      }else if(error.error.password){
+        this.toastr.error(error.error.password[0]+'!' , error.status);
+      }else{
+        this.toastr.error('ERROR NO ESPECIFICADO!');
+      }
     })
   }
 }

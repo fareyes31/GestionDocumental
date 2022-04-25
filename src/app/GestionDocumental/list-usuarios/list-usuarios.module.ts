@@ -6,6 +6,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const ruta: Route [] = [
@@ -24,7 +25,8 @@ const ruta: Route [] = [
   imports: [
     CommonModule,
     RouterModule.forChild(ruta),
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ]
 })
 export class ListUsuariosModule {

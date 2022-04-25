@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ListUsuariosService } from '../../../services/list-usuarios.service';
+import { Subscription } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-modal',
@@ -10,23 +12,51 @@ import { ListUsuariosService } from '../../../services/list-usuarios.service';
 })
 
 export class EditModalComponent implements OnInit {
+
   datosusuarios:any;
-  constructor(public dialog: MatDialog, private ListUsuariosService:ListUsuariosService, private toastr:ToastrService ,@Inject(MAT_DIALOG_DATA) data) {
-    this.datosusuarios = data;
-   }
+  subslistusuarios?:Subscription;
+  formedituser:FormGroup;
+
+  constructor(public dialog: MatDialog,
+    private ListUsuariosService:ListUsuariosService,
+    private toastr:ToastrService,
+    private fb:FormBuilder,
+    @Inject(MAT_DIALOG_DATA) data) {
+
+      this.datosusuarios = data;
+
+      this.formedituser = this.fb.group({
+        email: ['', [Validators.email, Validators.required]],
+        usuario: ['', [ Validators.required]],
+        contraseña: ['', Validators.required]
+      })
+
+    }
 
   ngOnInit(): void {
-    this.ListUsuariosService.buscarusuario(this.datosusuarios).subscribe((res)=>{
-      console.log(res)
+    this.subslistusuarios = this.ListUsuariosService.buscarusuario(this.datosusuarios).subscribe((res)=>{
+      this.formedituser = this.fb.group({
+        email: [res.users.email],
+        usuario: [res.users.name],
+        contraseña: ['']
+      })
+      // console.log(res.users.email)
     },error=>{
       this.closeDialog();
       this.toastr.error(error.error.error+'!' , error.status);
-      // console.log(error.error.error)
     })
+  }
+
+  ngOnDestroy(){
+    this.subslistusuarios?.unsubscribe();
   }
 
   closeDialog(){
     this.dialog.closeAll();
+  }
+
+  editarusuario(){
+
   }
 
 }
