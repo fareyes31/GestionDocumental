@@ -5,7 +5,6 @@
     <div class="row">
       <div class="col-md-12 login-form-header">
         <p class="login-form-font-header">Editar<span>Usuario</span></p>
-        <p></p>
       </div>
     </div>
     <div class="row">
@@ -26,16 +25,18 @@
         <input class="form-control" formControlName="contraseña" name="contraseña" type="password" placeholder="Contraseña" required />
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6 login-from-row " mat-dialog-actions>
-        <button class="btn btn-danger" (click)="closeDialog()" mat-dialog-close>Close</button>
-        <button type="submit" class="btn btn-primary">
-          Guardar
-        </button>
-      </div>
-    </div>
+    <br>
+    <!-- <div class="row"> -->
+      <!-- <div class="col-md-6 login-from-row " mat-dialog-actions> -->
+        <span class="m-3">
+          <button class="btn btn-danger" (click)="closeDialog()" mat-dialog-close>Close</button>
+        </span>
+        <span class="m-3">
+          <button type="submit" class="btn btn-primary"> Guardar </button>
+        </span>
+      <!-- </div> -->
+    <!-- </div> -->
   </form>
-
   </div>
   </div>
   </div>
