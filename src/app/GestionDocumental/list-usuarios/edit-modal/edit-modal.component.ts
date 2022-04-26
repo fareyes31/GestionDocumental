@@ -40,7 +40,6 @@ export class EditModalComponent implements OnInit {
         usuario: [res.users.name],
         contraseña: ['']
       })
-      // console.log(res.users.email)
     },error=>{
       this.closeDialog();
       this.toastr.error(error.error.error+'!' , error.status);
