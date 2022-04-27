@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { DataListUsers } from '../GestionDocumental/list-usuarios/list.type';
 
 
 @Injectable({
@@ -34,6 +35,19 @@ export class ListUsuariosService {
       'id':id
     }
     return this.Http.get<any>(`${this.baseurl}searchuser`,{headers, params})
+  }
 
+
+  edituser(params:DataListUsers){
+    console.log(params);
+    this.token = sessionStorage.getItem('token');
+    const headers={
+      'Authorization':'Bearer '+this.token
+    }
+    if(params.password == ""){
+      delete params.password;
+    }
+    console.log(params)
+    return this.Http.post<any>(`${this.baseurl}edituser`,params,{headers})
   }
 }

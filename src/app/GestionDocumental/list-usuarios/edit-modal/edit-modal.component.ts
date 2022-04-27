@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ListUsuariosService } from '../../../services/list-usuarios.service';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-modal',
@@ -13,22 +14,25 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 export class EditModalComponent implements OnInit {
 
+  formedituser:FormGroup;
   datosusuarios:any;
   subslistusuarios?:Subscription;
-  formedituser:FormGroup;
+  subsedituser?:Subscription;
 
   constructor(public dialog: MatDialog,
     private ListUsuariosService:ListUsuariosService,
     private toastr:ToastrService,
     private fb:FormBuilder,
+    private router:Router,
     @Inject(MAT_DIALOG_DATA) data) {
 
       this.datosusuarios = data;
 
       this.formedituser = this.fb.group({
+        id: ['', [Validators.required]],
         email: ['', [Validators.email, Validators.required]],
-        usuario: ['', [ Validators.required]],
-        contraseña: ['', Validators.required]
+        name: ['', [ Validators.required]],
+        password: ['', Validators.required]
       })
 
     }
@@ -36,18 +40,26 @@ export class EditModalComponent implements OnInit {
   ngOnInit(): void {
     this.subslistusuarios = this.ListUsuariosService.buscarusuario(this.datosusuarios).subscribe((res)=>{
       this.formedituser = this.fb.group({
+        id: [res.users.id],
         email: [res.users.email],
-        usuario: [res.users.name],
-        contraseña: ['']
+        name: [res.users.name],
+        password: ['']
       })
     },error=>{
-      this.closeDialog();
-      this.toastr.error(error.error.error+'!' , error.status);
+      if(error.status == '401'){
+        sessionStorage.removeItem('token')
+        this.router.navigate(['/login']);
+        this.toastr.error('ACCESO NO AUTORIZADO' , error.status);
+      }else{
+        this.toastr.error(error.error.error+'!' , error.status);
+        this.closeDialog();
+      }
     })
   }
 
   ngOnDestroy(){
     this.subslistusuarios?.unsubscribe();
+    this.subsedituser?.unsubscribe();
   }
 
   closeDialog(){
@@ -55,7 +67,11 @@ export class EditModalComponent implements OnInit {
   }
 
   editarusuario(){
-
+    this.subsedituser = this.ListUsuariosService.edituser(this.formedituser.value).subscribe((res)=>{
+      console.log(res);
+    },error=>{
+      console.log(error);
+    })
   }
 
 }
