@@ -47,6 +47,7 @@ export class EditModalComponent implements OnInit {
       })
     },error=>{
       if(error.status == '401'){
+        this.dialog.closeAll();
         sessionStorage.removeItem('token')
         this.router.navigate(['/login']);
         this.toastr.error('ACCESO NO AUTORIZADO' , error.status);
@@ -68,7 +69,7 @@ export class EditModalComponent implements OnInit {
 
   editarusuario(){
     this.subsedituser = this.ListUsuariosService.edituser(this.formedituser.value).subscribe((res)=>{
-      console.log(res);
+      this.toastr.success(res.message);
     },error=>{
       console.log(error);
     })

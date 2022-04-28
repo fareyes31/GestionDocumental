@@ -39,7 +39,6 @@ export class ListUsuariosService {
 
 
   edituser(params:DataListUsers){
-    console.log(params);
     this.token = sessionStorage.getItem('token');
     const headers={
       'Authorization':'Bearer '+this.token
@@ -47,7 +46,12 @@ export class ListUsuariosService {
     if(params.password == ""){
       delete params.password;
     }
-    console.log(params)
+    if(params.name == ""){
+      delete params.name;
+    }
+    if(params.email == ""){
+      delete params.email;
+    }
     return this.Http.post<any>(`${this.baseurl}edituser`,params,{headers})
   }
 }
