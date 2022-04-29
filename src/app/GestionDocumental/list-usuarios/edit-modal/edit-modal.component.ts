@@ -71,7 +71,14 @@ export class EditModalComponent implements OnInit {
     this.subsedituser = this.ListUsuariosService.edituser(this.formedituser.value).subscribe((res)=>{
       this.toastr.success(res.message);
     },error=>{
-      console.log(error);
+      if(error.error.email){
+        this.toastr.error(error.error.email);
+      }else if(error.error.password){
+        this.toastr.error(error.error.password);
+      }
+      else{
+        this.toastr.error('ERROR NO ESPECIFICADO!');
+      }
     })
   }
 
